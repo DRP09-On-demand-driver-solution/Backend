@@ -9,4 +9,4 @@ mybatis:
     map-underscore-to-camel-case: true
 
 server:
-  port: 8081
+  port: ${PORT:8081}
