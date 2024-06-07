@@ -1,7 +1,3 @@
-CREATE DATABASE IF NOT EXISTS on_demand_driver_solution;
-
-USE on_demand_driver_solution;
-
 CREATE TABLE IF NOT EXISTS user(
                                    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT 'ID',
                                    username VARCHAR(20) NOT NULL UNIQUE COMMENT 'username',
