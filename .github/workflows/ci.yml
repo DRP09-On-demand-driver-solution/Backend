@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Compile backend
-        run: cd .. && mvn clean compile
+        run: cd .. && find . && mvn clean compile
 
   test:
     runs-on: ubuntu-latest
