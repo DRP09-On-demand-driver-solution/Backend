@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Compile backend
-        run: mvn clean compile
+        run: cd .. && mvn clean compile
 
   test:
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Test backend
-        run: mvn test
+        run: cd .. && mvn test
