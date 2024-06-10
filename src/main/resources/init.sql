@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS user;
+
 CREATE TABLE IF NOT EXISTS user(
                                    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT 'ID',
                                    username VARCHAR(20) NOT NULL UNIQUE COMMENT 'username',
@@ -5,6 +8,9 @@ CREATE TABLE IF NOT EXISTS user(
                                    email VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'email address',
                                    nickname VARCHAR(20) NOT NULL DEFAULT '' COMMENT 'nickname',
                                    password VARCHAR(30) NOT NULL COMMENT 'password',
+                                   true_name VARCHAR(64) NOT NULL COMMENT 'real name',
+                                   card_number VARCHAR(16) NOT NULL COMMENT 'card number',
+                                   cvv VARCHAR(4) NOT NULL COMMENT 'cvv',
                                    create_time DATETIME NOT NULL COMMENT 'create time',
                                    update_time DATETIME NOT NULL COMMENT 'update time'
 ) COMMENT 'user table';

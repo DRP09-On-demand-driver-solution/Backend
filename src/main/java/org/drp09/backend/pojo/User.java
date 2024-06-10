@@ -12,6 +12,9 @@ public class User {
   private String email;
   private String nickname;
   private String password;
+  private String trueName;
+  private String cardNumber;
+  private String cvv;
   private LocalDateTime createTime;
   private LocalDateTime updateTime;
 }

@@ -14,9 +14,9 @@ public interface UserMapper {
   @Select("SELECT * FROM user WHERE username=#{username}")
   User findByUsername(String username);
 
-  @Insert("INSERT INTO user(username, nickname, gender, password, create_time, update_time) " +
-          "VALUES (#{username}, #{username}, #{gender}, #{password}, #{now}, #{now})")
-  void register(String username, String gender, String password, LocalDateTime now);
+  @Insert("INSERT INTO user(username, nickname, gender, password, true_name, card_number, cvv, create_time, update_time) " +
+          "VALUES (#{username}, #{username}, #{gender}, #{password}, #{trueName}, #{cardNumber}, #{cvv}, #{now}, #{now})")
+  void register(String username, String gender, String password, LocalDateTime now, String trueName, String cardNumber, String cvv);
 
   @Update("UPDATE user SET nickname=#{nickname}, email=#{email}, update_time=#{updateTime} WHERE id=#{id}")
   void update(User user);

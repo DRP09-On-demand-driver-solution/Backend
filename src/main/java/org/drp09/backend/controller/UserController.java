@@ -23,12 +23,12 @@ public class UserController {
   }
 
   @PostMapping("/register")
-  public Result<Void> register(String username, String gender, String password, String rePassword) {
+  public Result<Void> register(String username, String gender, String password, String rePassword, String trueName, String cardNumber, String cvv) {
     User user = userService.findByUsername(username);
 
     if (user == null) {
       if (password.equals(rePassword)) {
-        userService.register(username, gender, password);
+        userService.register(username, gender, password, trueName, cardNumber, cvv);
         return Result.success();
       } else {
         return Result.error("Passwords do not match");
