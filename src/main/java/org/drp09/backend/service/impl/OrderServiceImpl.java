@@ -100,6 +100,7 @@ public class OrderServiceImpl implements OrderService {
 
   @Override
   public void rate(Order order) {
+    order.setStatus("Rated");
     LocalDateTime now = LocalDateTime.now();
     order.setUpdateTime(now);
 

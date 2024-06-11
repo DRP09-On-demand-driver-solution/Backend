@@ -43,6 +43,6 @@ public interface OrderMapper {
   @Update("UPDATE `order` SET status=#{status}, acceptor=#{acceptor}, update_time=#{updateTime} WHERE id=#{id}")
   void cancel(Order order);
 
-  @Update("UPDATE `order` SET rating=#{rating}, update_time=#{updateTime} WHERE id=#{id}")
+  @Update("UPDATE `order` SET status=#{status}, rating=#{rating}, update_time=#{updateTime} WHERE id=#{id}")
   void rate(Order order);
 }
