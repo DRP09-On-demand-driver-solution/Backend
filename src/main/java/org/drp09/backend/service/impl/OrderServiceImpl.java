@@ -97,4 +97,12 @@ public class OrderServiceImpl implements OrderService {
 
     orderMapper.cancel(order);
   }
+
+  @Override
+  public void rate(Order order) {
+    LocalDateTime now = LocalDateTime.now();
+    order.setUpdateTime(now);
+
+    orderMapper.rate(order);
+  }
 }

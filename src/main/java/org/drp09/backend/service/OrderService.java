@@ -22,4 +22,6 @@ public interface OrderService {
   void finish(Order order);
 
   void cancel(Order order);
+
+  void rate(Order order);
 }

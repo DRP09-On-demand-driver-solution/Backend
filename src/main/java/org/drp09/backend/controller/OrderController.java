@@ -73,4 +73,10 @@ public class OrderController {
     orderService.cancel(order);
     return Result.success();
   }
+
+  @PatchMapping("/rate")
+  public Result<Void> rate(@RequestBody Order order) {
+    orderService.rate(order);
+    return Result.success();
+  }
 }

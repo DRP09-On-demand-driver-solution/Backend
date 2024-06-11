@@ -11,7 +11,10 @@ import java.time.LocalDateTime;
 @Mapper
 public interface UserMapper {
 
-  @Select("SELECT * FROM user WHERE username=#{username}")
+  @Select("SELECT *, " +
+          "(SELECT COUNT(*) FROM `order` WHERE acceptor=(SELECT id FROM user WHERE username=#{username}) AND status='Finished') AS order_num, " +
+          "(SELECT AVG(rating) FROM `order` WHERE acceptor=(SELECT id FROM user WHERE username=#{username})) AS rating " +
+          "FROM user WHERE username=#{username}")
   User findByUsername(String username);
 
   @Insert("INSERT INTO user(username, nickname, gender, password, true_name, card_number, cvv, create_time, update_time) " +

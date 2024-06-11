@@ -17,4 +17,6 @@ public class User {
   private String cvv;
   private LocalDateTime createTime;
   private LocalDateTime updateTime;
+  private Integer orderNum;
+  private Double rating;
 }

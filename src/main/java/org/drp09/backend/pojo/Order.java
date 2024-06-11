@@ -19,4 +19,5 @@ public class Order {
   private String comment;
   private LocalDateTime createTime;
   private LocalDateTime updateTime;
+  private Double rating;
 }
