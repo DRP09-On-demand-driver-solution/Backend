@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public interface UserMapper {
 
   @Select("SELECT *, " +
-          "(SELECT COUNT(*) FROM `order` WHERE acceptor=(SELECT id FROM user WHERE username=#{username}) AND status='Finished') AS order_num, " +
+          "(SELECT COUNT(*) FROM `order` WHERE acceptor=(SELECT id FROM user WHERE username=#{username}) AND status IN ('Finished', 'Rated')) AS order_num, " +
           "(SELECT AVG(rating) FROM `order` WHERE acceptor=(SELECT id FROM user WHERE username=#{username})) AS rating " +
           "FROM user WHERE username=#{username}")
   User findByUsername(String username);
