@@ -57,7 +57,11 @@ public class OrderController {
   }
 
   @PatchMapping("/accept")
-  public Result<Void> accept(@RequestBody Order order) {
+  public synchronized Result<Void> accept(@RequestBody Order order) {
+    Order theOrder = orderService.getById(order.getId());
+    if (!theOrder.getStatus().equals("Waiting")) {
+      return Result.error("The order is already accepted by someone else. Please refresh the page");
+    }
     orderService.accept(order);
     return Result.success();
   }

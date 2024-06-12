@@ -45,4 +45,7 @@ public interface OrderMapper {
 
   @Update("UPDATE `order` SET status=#{status}, rating=#{rating}, update_time=#{updateTime} WHERE id=#{id}")
   void rate(Order order);
+
+  @Select("SELECT * FROM `order` WHERE id=#{id}")
+  Order getById(Integer id);
 }

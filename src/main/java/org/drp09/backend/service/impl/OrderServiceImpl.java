@@ -106,4 +106,9 @@ public class OrderServiceImpl implements OrderService {
 
     orderMapper.rate(order);
   }
+
+  @Override
+  public Order getById(Integer id) {
+    return orderMapper.getById(id);
+  }
 }

@@ -24,4 +24,6 @@ public interface OrderService {
   void cancel(Order order);
 
   void rate(Order order);
+
+  Order getById(Integer id);
 }
