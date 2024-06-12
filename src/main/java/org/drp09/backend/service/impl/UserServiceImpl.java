@@ -22,7 +22,8 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User findByUsername(String username) {
-    return userMapper.findByUsername(username);
+    Integer id = userMapper.getId(username);
+    return userMapper.userInfo(id);
   }
 
   @Override
@@ -34,8 +35,8 @@ public class UserServiceImpl implements UserService {
   @Override
   public User userInfo() {
     Map<String, Object> claims = ThreadLocalUtil.get();
-    String username = (String) claims.get("username");
-    return findByUsername(username);
+    Integer id = (Integer) claims.get("id");
+    return userMapper.userInfo(id);
   }
 
   @Override
@@ -54,5 +55,10 @@ public class UserServiceImpl implements UserService {
     Integer userId = (Integer) claims.get("id");
     LocalDateTime now = LocalDateTime.now();
     userMapper.resetPassword(newPwd, userId, now);
+  }
+
+  @Override
+  public User othersInfo(Integer id) {
+    return userMapper.userInfo(id);
   }
 }

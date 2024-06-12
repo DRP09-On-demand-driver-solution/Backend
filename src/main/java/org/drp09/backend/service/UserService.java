@@ -13,4 +13,6 @@ public interface UserService {
   void update(User user);
 
   void resetPassword(String newPwd);
+
+  User othersInfo(Integer id);
 }

@@ -80,4 +80,10 @@ public class UserController {
       return Result.error("Passwords do not match");
     }
   }
+
+  @GetMapping("/othersInfo")
+  public Result<User> othersInfo(Integer id) {
+    User user = userService.othersInfo(id);
+    return Result.success(user);
+  }
 }

@@ -11,11 +11,8 @@ import java.time.LocalDateTime;
 @Mapper
 public interface UserMapper {
 
-  @Select("SELECT *, " +
-          "(SELECT COUNT(*) FROM `order` WHERE acceptor=(SELECT id FROM user WHERE username=#{username}) AND status IN ('Finished', 'Rated')) AS order_num, " +
-          "(SELECT COALESCE(AVG(rating), 5.0) FROM `order` WHERE acceptor=(SELECT id FROM user WHERE username=#{username})) AS rating " +
-          "FROM user WHERE username=#{username}")
-  User findByUsername(String username);
+  @Select("SELECT id FROM user WHERE username=#{username}")
+  Integer getId(String username);
 
   @Insert("INSERT INTO user(username, nickname, gender, password, true_name, card_number, cvv, create_time, update_time) " +
           "VALUES (#{username}, #{username}, #{gender}, #{password}, #{trueName}, #{cardNumber}, #{cvv}, #{now}, #{now})")
@@ -26,4 +23,10 @@ public interface UserMapper {
 
   @Update("UPDATE user SET password=#{newPwd}, update_time=#{now} WHERE id=#{userId}")
   void resetPassword(String newPwd, Integer userId, LocalDateTime now);
+
+  @Select("SELECT *, " +
+          "(SELECT COUNT(*) FROM `order` WHERE acceptor=#{id} AND status IN ('Finished', 'Rated')) AS order_num, " +
+          "(SELECT COALESCE(AVG(rating), 5.0) FROM `order` WHERE acceptor=#{id}) AS rating " +
+          "FROM user WHERE id=#{id}")
+  User userInfo(Integer id);
 }
