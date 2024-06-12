@@ -26,7 +26,7 @@ public interface UserMapper {
 
   @Select("SELECT *, " +
           "(SELECT COUNT(*) FROM `order` WHERE acceptor=#{id} AND status IN ('Finished', 'Rated')) AS order_num, " +
-          "(SELECT COALESCE(AVG(rating), 5.0) FROM `order` WHERE acceptor=#{id}) AS rating " +
+          "(SELECT COALESCE(AVG(rating), 5.0) FROM `order` WHERE acceptor=#{id} AND status IN ('Finished', 'Rated')) AS rating " +
           "FROM user WHERE id=#{id}")
   User userInfo(Integer id);
 }
