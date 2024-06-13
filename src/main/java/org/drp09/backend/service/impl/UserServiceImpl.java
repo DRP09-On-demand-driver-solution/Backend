@@ -27,9 +27,9 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void register(String username, String gender, String password, String trueName, String cardNumber, String cvv) {
+  public void register(String username, String gender, String password, String phone, String trueName, String cardNumber, String cvv) {
     LocalDateTime now = LocalDateTime.now();
-    userMapper.register(username, gender, password, now, trueName, cardNumber, cvv);
+    userMapper.register(username, gender, password, phone, now, trueName, cardNumber, cvv);
   }
 
   @Override

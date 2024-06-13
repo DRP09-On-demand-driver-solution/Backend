@@ -6,7 +6,7 @@ public interface UserService {
 
   User findByUsername(String username);
 
-  void register(String username, String gender, String password, String trueName, String cardNumber, String cvv);
+  void register(String username, String gender, String password, String phone, String trueName, String cardNumber, String cvv);
 
   User userInfo();
 

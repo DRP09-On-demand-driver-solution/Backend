@@ -14,11 +14,11 @@ public interface UserMapper {
   @Select("SELECT id FROM user WHERE username=#{username}")
   Integer getId(String username);
 
-  @Insert("INSERT INTO user(username, nickname, gender, password, true_name, card_number, cvv, create_time, update_time) " +
-          "VALUES (#{username}, #{username}, #{gender}, #{password}, #{trueName}, #{cardNumber}, #{cvv}, #{now}, #{now})")
-  void register(String username, String gender, String password, LocalDateTime now, String trueName, String cardNumber, String cvv);
+  @Insert("INSERT INTO user(username, nickname, gender, password, phone, true_name, card_number, cvv, create_time, update_time) " +
+          "VALUES (#{username}, #{username}, #{gender}, #{password}, #{phone}, #{trueName}, #{cardNumber}, #{cvv}, #{now}, #{now})")
+  void register(String username, String gender, String password, String phone, LocalDateTime now, String trueName, String cardNumber, String cvv);
 
-  @Update("UPDATE user SET nickname=#{nickname}, email=#{email}, update_time=#{updateTime} WHERE id=#{id}")
+  @Update("UPDATE user SET nickname=#{nickname}, email=#{email}, phone=#{phone}, update_time=#{updateTime} WHERE id=#{id}")
   void update(User user);
 
   @Update("UPDATE user SET password=#{newPwd}, update_time=#{now} WHERE id=#{userId}")

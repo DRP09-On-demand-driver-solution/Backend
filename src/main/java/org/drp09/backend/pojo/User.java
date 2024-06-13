@@ -12,6 +12,7 @@ public class User {
   private String email;
   private String nickname;
   private String password;
+  private String phone;
   private String trueName;
   private String cardNumber;
   private String cvv;
